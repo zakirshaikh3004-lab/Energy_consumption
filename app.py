@@ -4,10 +4,8 @@ import numpy as np
 from sklearn.ensemble import RandomForestRegressor
 from datetime import datetime
 
-
-# ==========================
 # Load dataset
-# ==========================
+
 st.title("🌆 Smart City Energy Consumption Dashboard")
 st.write("This app shows data analysis and predicts city energy consumption.")
 
@@ -27,9 +25,9 @@ df['month'] = df.index.month
 df['year'] = df.index.year
 df['is_weekend'] = df.index.dayofweek.isin([5, 6]).astype(int)
 
-# ==========================
+
 # Data Analysis (EDA)
-# ==========================
+
 st.subheader("📊 Raw Data Sample")
 st.dataframe(df.head())
 
@@ -44,9 +42,9 @@ st.subheader("📅 Average Consumption by Month")
 monthly_avg = df.groupby("month")["energy_consumption"].mean()
 st.bar_chart(monthly_avg)
 
-# ==========================
+
 # Model Training
-# ==========================
+
 features = ['hour', 'dayofweek', 'month', 'year', 'is_weekend']
 target = 'energy_consumption'
 
@@ -62,9 +60,9 @@ y_train, y_test = y[:split_point], y[split_point:]
 model = RandomForestRegressor(n_estimators=100, random_state=42)
 model.fit(X_train, y_train)
 
-# ==========================
+
 # Prediction Section
-# ==========================
+
 st.subheader("🔮 Predict Energy Consumption")
 
 # User input
