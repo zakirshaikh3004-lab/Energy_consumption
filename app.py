@@ -109,9 +109,3 @@ if st.button("Predict"):
     prediction = model.predict(new_df[features])[0]
     st.success(f"Predicted Energy Consumption at {combined_datetime.strftime('%Y-%m-%d %H:%M')} → **{prediction:.2f} MW**")
 
-st.markdown("""
----
-_**Note:** The application now runs much faster because the data loading and model training
-steps are only performed once, thanks to caching with `@st.cache_data` and
-`@st.cache_resource`._
-""")
